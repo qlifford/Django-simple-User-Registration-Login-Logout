@@ -1,0 +1,11 @@
+<div style="margin-bottom: 30px;">
+    <center>
+        <br><br>
+        <h1>Login here</h1>
+    <form method="POST">
+        {% csrf_token %}
+            {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+    </center>
+</div>
