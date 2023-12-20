@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+                <h5>Total Orders</h5>
+                <hr>
+                <h1 style="text-align: center; padding: 10px">{{ total_orders }}</h1>
+        </div>
+    </div>
+
+    <div class="col-md">
+        <div class="card card-body">
+                <h5>Pending</h5>
+                <hr>
+                <h1 style="text-align: center; padding: 10px">{{ pending.count }}</h1>
+        </div>
+    </div>
+
+    <div class="col-md">
+        <div class="card card-body">
+                <h5>Delivered</h5>
+                <hr>
+                <h1 style="text-align: center; padding: 10px">{{ delivered.count }}</h1>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-md">
+        <h3>Customers</h3>
+        <hr>
+        <div class="card card-body">
+            <a href="" class="btn btn-primary btn-sm btn-block">Create Customer</a>
+
+            <table class="table table-striped">
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th style="color: blue;">View</th>
+                </tr>
+                {% for customer in customers %}
+                    <tr>
+                        <td>{{ customer.name }}</td>
+                        <td>{{ customer.phone }}</td>
+                        <td><a href="{% url 'customer' customer.id %}">Details</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+                <h1 style="text-align: center; padding: 10px"></h1>
+        </div>
+    </div>
+
+    <div class="col-md">
+        <h3>Latest Orders</h3>
+        <hr>
+        <div class="card card-body">
+            <table class="table table-striped">
+                <tr>
+                    <th>Product</th>
+                    <th>Date Ordered</th>
+                    <th>Status</th>
+                    <th>Update</th>
+                    <th>Remove</th>
+                </tr>
+                {% for order in orders %}
+                    <tr>
+                        <td>{{ order.product }}</td>
+                        <td>{{ order.date_created }}</td>
+                        <td>{{ order.status }}</td>
+                        <td><a style="color: blue;" href="{% url 'update_order' order.id %}">Update</a></td>
+                        <td><a style="color: red;" href="{% url 'delete_order' order.id %}">Remove</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+                <h1 style="text-align: center; padding: 10px"></h1>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+

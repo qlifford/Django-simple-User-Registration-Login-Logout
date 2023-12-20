@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<center>
+<div class="row w-50">
+    <div class="col-md">
+        <div class="card card-body">
+            <p class="text-center">Are you sure you want to remove {{ item }}</p>
+            <form method="POST">
+                {% csrf_token %}
+                <center>
+                    <a class="btn btn-warning" href="{% url 'home' %}">Cancel</a>
+                    <input class="btn btn-danger" type="submit" value="Confirm">
+                </center>
+            </form>
+        </div>
+    </div>
+</div>
+</center>
+{% endblock %}
+

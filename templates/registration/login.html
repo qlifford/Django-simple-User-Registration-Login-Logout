@@ -1,11 +1,11 @@
-<div style="margin-bottom: 30px;">
-    <center>
-        <br><br>
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
         <h1>Login here</h1>
     <form method="POST">
         {% csrf_token %}
             {{ form.as_p }}
         <button type="submit">Login</button>
     </form>
-    </center>
 </div>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+                <h1>Customer:{{ customer }}</h1>
+                <hr>
+            <a class="btn btn-outline-primary btn-sm btn-block" href="">Update Customer</a>
+            <a href="{% url 'create_order' customer.id %}" class="btn btn-primary btn-sm btn-block">Place an Order</a>
+        </div>
+    </div>
+    <div class="col-md">
+        <div class="card card-body">
+                <h1>Contact</h1>
+                <hr>
+                <p>Email: {{ customer.email }}</p>
+                <p>Phone: {{ customer.phone }}</p>
+        </div>
+    </div>
+
+    <div class="col-md">
+        <div class="card card-body">
+                <h1>Total Orders</h1>
+                <hr>
+                <h1 style="text-align: center; padding: 10px">{{ orders.count }}</h1>
+        </div>
+    </div>
+</div>
+<br>
+
+<div class="row">
+    <div class="col">
+        <div class="card card-body">
+            <form method="GET">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</div>
+<br>
+
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <table class="table table-danger">
+                <tr>
+                    <th>Product</th>
+                    <th>Category</th>
+                    <th>Date Ordered</th>
+                    <th>Status</th>
+                    <th style="color: blue;">Update</th>
+                    <th style="color: red;">Remove</th>
+                </tr>
+                {% for order in orders %}
+                    <tr>
+                        <td>{{ order.product }}</td>
+                        <td>{{ order.product.category }}</td>
+                        <td>{{ order.date_created }}</td>
+                        <td>{{ order.status }}</td>
+                        <td><a style="color: blue;" href="{% url 'update_order' order.id %}">Update</a></td>
+                        <td><a style="color: red;" href="{% url 'delete_order' order.id %}">Remove</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
