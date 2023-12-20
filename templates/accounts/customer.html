@@ -1,12 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
-<br>
 <div class="row">
     <div class="col-md">
         <div class="card card-body">
-                <h1>Customer:{{ customer }}</h1>
+                <h1>{{ customer }}</h1>
                 <hr>
-            <a class="btn btn-outline-primary btn-sm btn-block" href="">Update Customer</a>
+            <a class="btn btn-outline-primary btn-sm btn-block" href="">Update</a>
             <a href="{% url 'create_order' customer.id %}" class="btn btn-primary btn-sm btn-block">Place an Order</a>
         </div>
     </div>

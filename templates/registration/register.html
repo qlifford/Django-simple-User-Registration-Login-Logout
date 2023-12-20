@@ -4,8 +4,27 @@
     <h1>Register here</h1>
     <form method="POST">
         {% csrf_token %}
-            {{ form.as_p }}
-        <button type="submit">Register</button>
+        {{form.username.label }}
+        {{ form.username }}
+        <br><br>
+
+        {{ form.email.label }}
+        {{ form.email }}
+        <br><br>
+
+        {{ form.password1.label }}
+        {{ form.password1 }}
+        <br><br>
+
+        {{ form.password2.label }}
+        {{ form.password2 }}
+        <br><br>
+
+        <button class="btn btn-primary" type="submit">Register</button>
+        <br>
+        OR
+        <br>
+        <a href="/login/">Login</a>
     </form>
 </div>
 {% endblock %}
